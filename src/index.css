@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+@layer base {
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0b0b0d;
+    --surface: #111114;
+    --panel: #18181c;
+    --panel-raised: #1f1f25;
+    --border: #25252d;
+    --border-hi: #33333d;
+    --text: #ece8e2;
+    --text-2: #84808a;
+    --text-3: #48464e;
+    --accent: #e8a020;
+    --accent-2: #ffba50;
+    --accent-fg: #0b0b0d;
+    --accent-dim: rgba(232, 160, 32, 0.11);
+    --accent-border: rgba(232, 160, 32, 0.26);
+    --accent-glow: 0 0 20px rgba(232, 160, 32, 0.25);
+    --green: #34d399;
+    --green-dim: rgba(52, 211, 153, 0.10);
+    --green-border: rgba(52, 211, 153, 0.24);
+    --violet: #a78bfa;
+    --violet-dim: rgba(167, 139, 250, 0.10);
+    --violet-border: rgba(167, 139, 250, 0.24);
+    --red: #f87171;
+    --red-dim: rgba(248, 113, 113, 0.10);
+    --amber-warn: #fbbf24;
+    --amber-warn-dim: rgba(251, 191, 36, 0.10);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.4);
+    --shadow: 0 2px 8px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.7);
+    /* Piano */
+    --key-white: #cdc9c0;
+    --key-white-h: #ddd9d0;
+    --key-white-act: #e8a020;
+    --key-black: #0c0c0f;
+    --key-black-h: #1c1c22;
+    --key-black-act: #c88010;
+    --key-stroke: #06060a;
+    --key-label: #e8a020;
+    /* Fretboard */
+    --neck: #16120e;
+    --neck-side: #0e0a08;
+    --fret-bar: #302a24;
+    --str: #524e48;
+    --dot: #201c18;
+    --nut: #78685a;
+    --note-act: #e8a020;
+    --note-act-fg: #0b0b0d;
+    --fret-num-c: #3a3632;
+    --str-label: #585450;
+    --str-label-act: #e8a020;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #edeae2;
+    --surface: #f3f0e8;
+    --panel: #f9f6f1;
+    --panel-raised: #ffffff;
+    --border: #d0ccc2;
+    --border-hi: #bfbbb3;
+    --text: #1a1714;
+    --text-2: #6c665c;
+    --text-3: #a09890;
+    --accent: #9e6608;
+    --accent-2: #c07c10;
+    --accent-fg: #ffffff;
+    --accent-dim: rgba(158, 102, 8, 0.09);
+    --accent-border: rgba(158, 102, 8, 0.26);
+    --accent-glow: 0 0 20px rgba(158, 102, 8, 0.18);
+    --green: #047857;
+    --green-dim: rgba(4, 120, 87, 0.09);
+    --green-border: rgba(4, 120, 87, 0.24);
+    --violet: #6d28d9;
+    --violet-dim: rgba(109, 40, 217, 0.09);
+    --violet-border: rgba(109, 40, 217, 0.22);
+    --red: #dc2626;
+    --red-dim: rgba(220, 38, 38, 0.09);
+    --amber-warn: #b45309;
+    --amber-warn-dim: rgba(180, 83, 9, 0.09);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.07);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    /* Piano */
+    --key-white: #f0ece4;
+    --key-white-h: #faf7f2;
+    --key-white-act: #9e6608;
+    --key-black: #1a1510;
+    --key-black-h: #2a251e;
+    --key-black-act: #7c5006;
+    --key-stroke: #c4c0b8;
+    --key-label: #9e6608;
+    /* Fretboard */
+    --neck: #c4a06c;
+    --neck-side: #a8885a;
+    --fret-bar: #988060;
+    --str: #786040;
+    --dot: #b49870;
+    --nut: #d0b888;
+    --note-act: #9e6608;
+    --note-act-fg: #ffffff;
+    --fret-num-c: #a09880;
+    --str-label: #908070;
+    --str-label-act: #9e6608;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100svh;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+}
+
+@layer components {
+  /* ── Tab pills ── */
+  .tab-pill {
+    padding: 5px 13px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background 120ms, color 120ms, border-color 120ms;
+    color: var(--text-2);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    outline: none;
+  }
+  .tab-pill:hover { color: var(--text); background: var(--panel-raised); }
+  .tab-pill.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+    border-color: var(--accent-border);
+  }
+
+  /* ── Form controls ── */
+  .ctrl-select {
+    appearance: none;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 120ms;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2384808a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 26px;
+  }
+  .ctrl-select:hover, .ctrl-select:focus { border-color: var(--border-hi); }
+
+  .ctrl-input {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    outline: none;
+    transition: border-color 120ms;
+    width: 64px;
+  }
+  .ctrl-input:focus { border-color: var(--accent-border); }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── Score bar ── */
+  .score-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--border);
+    width: 72px;
+    overflow: hidden;
+  }
+  .score-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+    transition: width 250ms ease;
+  }
+
+  /* ── Chord card ── */
+  .chord-card {
+    background: var(--panel-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 120ms, box-shadow 120ms;
+    min-width: 88px;
+  }
+  .chord-card:hover {
+    border-color: var(--border-hi);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Scale row ── */
+  .scale-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--panel-raised);
+    border: 1px solid var(--border);
+    transition: border-color 120ms;
+  }
+  .scale-row:hover { border-color: var(--border-hi); }
+
+  /* ── Note badge ── */
+  .note-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent-border);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Theme toggle button ── */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-2);
+    cursor: pointer;
+    transition: background 120ms, border-color 120ms, color 120ms;
+    outline: none;
+  }
+  .theme-toggle:hover {
+    background: var(--panel-raised);
+    border-color: var(--border-hi);
+    color: var(--text);
+  }
+}
